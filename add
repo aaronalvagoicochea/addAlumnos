@@ -1,0 +1,52 @@
+using System;
+using System.Collections.Generic;
+
+namespace studentTracker
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            var students = new List<Student>();
+            var adding = true;
+
+            while (adding)
+            {
+                var newstudent = new Student();
+                Console.WriteLine("como se llama el alumno nro {0}?",students.Count+1);
+                newstudent.name= Console.ReadLine();
+
+                Console.WriteLine("Que nota tiene?");
+                newstudent.grade= (int.Parse(Console.ReadLine()));
+
+                Console.WriteLine("en q numero de mes es su cumple?");
+                newstudent.birthday = Console.ReadLine();
+
+                students.Add(newstudent);
+
+                Console.WriteLine("Add another y/n");
+                if(Console.ReadLine() != "y")
+                { adding = false;
+                }
+            }
+
+           
+            foreach (var item in students)
+            {
+                Console.WriteLine("nombre: {0} /  Puntaje: {1} / Mes de nac: {2}",item.name, item.grade, item.birthday);
+            }
+    
+
+        }
+    }
+
+    class Student
+    {
+        public string name;
+        public int grade;
+        public string birthday;
+        public int address; //not in use
+        public int phone;  // not in use
+
+    }
+}
